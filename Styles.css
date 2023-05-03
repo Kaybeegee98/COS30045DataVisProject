@@ -1,0 +1,41 @@
+body {
+    background-color: red;      /* Set consistent Background Colour*/
+}
+
+.split {                          /* Prepare environment for the div elements*/ 
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    top: 0;
+}
+
+.rightDiv {
+    left: 50%;
+    background-color: red;      /*Make both right and left div's same as background */
+}
+
+.leftDiv {
+    background-color: red;
+}
+
+.middleDiv {
+    right: 25%;
+    background-color: green;    /*This is the primary Div*/
+}
+
+.websiteTitle {
+    text-align: center;
+}
+
+.textBox {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.graphDiv {
+    width: 75%;
+    height: 20em;
+    margin: auto;
+    padding: 2em;
+    background-color: pink;
+}
