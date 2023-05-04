@@ -32,9 +32,8 @@ body {
     padding-right: 2em;
 }
 
-.graphDiv {
+.graph {                        /*Setup the backgrounds for the Graph Elements*/
     width: 75%;
-    height: 20em;
     margin: auto;
     padding: 2em;
     background-color: pink;
