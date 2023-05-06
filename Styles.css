@@ -1,26 +1,25 @@
+html {
+    overflow-y: scroll;
+}
+
 body {
     background-color: red;      /* Set consistent Background Colour*/
-}
-
-.split {                          /* Prepare environment for the div elements*/ 
+    display: flex;
+    flex-wrap: wrap;
     height: 100%;
-    width: 50%;
-    position: fixed;
-    top: 0;
 }
 
-.rightDiv {
-    left: 50%;
+
+.rightDiv, .leftDiv {
     background-color: red;      /*Make both right and left div's same as background */
-}
-
-.leftDiv {
-    background-color: red;
+    flex-basis: 25%;
+    height: 100%;
 }
 
 .middleDiv {
-    right: 25%;
     background-color: green;    /*This is the primary Div*/
+    flex-basis: 50%;
+    height: 100%;
 }
 
 .websiteTitle {
