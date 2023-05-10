@@ -24,22 +24,23 @@ function init() {
 
         //Create the y-scale
         var yScale = d3.scaleLinear()
-          //  .domain([0, d3.max(migrationData)])
+            //  .domain([0, d3.max(migrationData)])
             .domain([0, d3.max(migrationData, d => d.Net_Overseas_Migration_Thousands)])
             .range([0, h]);
         //Create x-axis
         var xAxis = d3.axisBottom()
             .scale(xScale);
         svg.append("g")
-           .attr("transform", "translate(0, " + (h - barpadding) + ")")
+            .attr("transform", "translate(0, " + (h - barpadding) + ")")
             .call(xAxis);
 
         var yAxis = d3.axisLeft()
             .scale(yScale);
 
         svg.append("g")
-        .attr("transform", "translate(" + (barpadding) + ",0)")
-        .call(yAxis);
+            .attr("transform", "translate(" + (barpadding) + ",0)")
+            .call(yAxis);
+
 
 
 
