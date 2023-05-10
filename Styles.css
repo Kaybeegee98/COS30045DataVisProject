@@ -37,3 +37,9 @@ body {
     padding: 2em;
     background-color: pink;
 }
+
+#lineGraph {
+    fill: none;
+    stroke: slategray;
+    stroke-width: 0.5;
+}
