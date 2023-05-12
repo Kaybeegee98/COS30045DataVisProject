@@ -50,16 +50,36 @@ function init() {
             .data(migrationData)
             .enter()
             .append("rect")
+            /*
             .attr("x", function (d, i) {
                 return i * (w / migrationData.length);
             })
+            */
+            .attr("x", function (d, i) {
+                return xScale(i.migrationData.length);
+            })
+            /*
+             .attr("y", function (d) {
+                 return h - (d.Net_Overseas_Migration_Thousands / 3);
+             })
+             */
             .attr("y", function (d) {
-                return h - (d.Net_Overseas_Migration_Thousands / 3);
+                return h - yScale(d.Net_Overseas_Migration_Thousands);
+
             })
+            /*
+             .attr("height", function (d) {
+                 return d.Net_Overseas_Migration_Thousands / 3;
+             })
+             */
             .attr("height", function (d) {
-                return d.Net_Overseas_Migration_Thousands / 3;
+                return yScale(d.Net_Overseas_Migration_Thousands)
             })
+
+            /*
             .attr("width", w / migrationData.length - 5)
+            */
+            .attr("width", xScale.bandwidth())
             .attr("fill", function (d) {
                 return "rgb(0,0, " + Math.round(d.Net_Overseas_Migration_Thousands * 10) + ")";
             });
