@@ -12,6 +12,7 @@
        <script src="https://d3js.org/d3.v6.min.js"></script> 
        <script src="BarGraphScript.js"></script>
        <script src="LineGraphScript.js"></script>
+       <script src="PieGraphScript.js"></script>
     </head>
     <body>
         <div class="leftDiv"></div>
@@ -71,7 +72,10 @@
             </div>
             <br>
             <div class="graph pieDiv">
-                <p>This is a Pie Graph</p>
+                <script>
+                    pieInit();
+                </script>
+                <p id="pieGraph"></p>
             </div>
             <div class="textBox">
                 <p>

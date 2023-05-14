@@ -46,6 +46,7 @@ function init() {
 
 
 
+        //Append rectangles for bar chart
         svg.selectAll("rect")
             .data(migrationData)
             .enter()
@@ -55,9 +56,11 @@ function init() {
                 return i * (w / migrationData.length);
             })
             */
-            .attr("x", function (d, i) {
-                return xScale(i.migrationData.length);
+           
+            .attr("x", function (d) {
+                return xScale(d.Year);
             })
+            
             /*
              .attr("y", function (d) {
                  return h - (d.Net_Overseas_Migration_Thousands / 3);
@@ -73,16 +76,17 @@ function init() {
              })
              */
             .attr("height", function (d) {
-                return yScale(d.Net_Overseas_Migration_Thousands)
+                return yScale(d.Net_Overseas_Migration_Thousands - 13)
             })
 
             /*
             .attr("width", w / migrationData.length - 5)
             */
-            .attr("width", xScale.bandwidth())
+            .attr("width", w / migrationData.length - 5)
             .attr("fill", function (d) {
                 return "rgb(0,0, " + Math.round(d.Net_Overseas_Migration_Thousands * 10) + ")";
             });
+            
 
 
 
