@@ -12,7 +12,6 @@
        <script src="https://d3js.org/d3.v6.min.js"></script> 
        <script src="BarGraphScript.js"></script>
        <script src="LineGraphScript.js"></script>
-       <script src="PieGraphScript.js"></script>
     </head>
     <body>
         <div class="leftDiv"></div>
@@ -99,6 +98,13 @@
                     <option value="Philippines">Philippines</option>
                     <option value="SouthAfrica">South Africa</option>
                 </select>
+            </div>
+            <br><br>
+            <div class="graph stackedBarDiv">
+                <script>
+                    stackedBarInit();
+                </script>
+                <p id="stackedBarGraph">This is where the stacked bar goes</p>
             </div>
         </div>
         <div class="rightDiv"></div>
