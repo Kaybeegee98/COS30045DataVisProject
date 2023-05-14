@@ -5,7 +5,7 @@ function lineInit() {
 
     var dataset;
 
-    d3.csv("Files/InflationRateSecondAttempt.csv", function(d) {
+    d3.csv("Files/InflationRateSecondAttempt.csv", function(d) {        //Load in each CSV column into a different value
         return {
             date: d.Date,
             AustraliaValues: +d.AustraliaValues,
@@ -18,37 +18,35 @@ function lineInit() {
         };
     }).then(function(data) {
         dataset = data;
-        console.table(dataset, ["country", "dateValues"]);
-
-        lineChart(dataset, w, h, padding);
+        lineChart(dataset, w, h, padding);                              //Run Linechart() with inputed values
     });
 }
 
 function lineChart(data, w, h, padding) {
     console.log(data);
 
-    var parseTime = d3.timeParse("%b-%y");
+    var parseTime = d3.timeParse("%b-%y");                              //Create a solution for converting string to date
     var dates = [];
     for(let obj of data) {
-        dates.push(parseTime(obj.date));
+        dates.push(parseTime(obj.date));                                //Iterate over all dates and push them to dates as a date
     }
 
     xScale = d3.scaleTime()
-                .domain(d3.extent(dates))
+                .domain(d3.extent(dates))                               //Find the lowest and highest dates
                 .range([0, w]);
 
     yScale = d3.scaleLinear()
-                .domain([0, d3.max(data, function (d) { return d.AustraliaValues; })
+                .domain([0, d3.max(data, function (d) { return d.IndiaValues; })            //Scale from india values since india has the highest inflation rate
                 ])
                 .range([h, 0]);
 
     australialine = d3.line()
                 .x(function(d) { return xScale(parseTime(d.date)); })
-                .y(function(d) { return yScale(d.AustraliaValues)});
+                .y(function(d) { return yScale(d.AustraliaValues)});        //Create the line using australian values
 
     englandline = d3.line()
                     .x(function(d) { return xScale(parseTime(d.date)); })
-                    .y(function(d) { return yScale(d.EnglandValues)});
+                    .y(function(d) { return yScale(d.EnglandValues)});      //Create the line using Engaland Values
 
     var svg = d3.select("#lineGraph")
                 .append("svg")
