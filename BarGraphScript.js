@@ -24,22 +24,23 @@ function init() {
 
         //Create the y-scale
         var yScale = d3.scaleLinear()
-          //  .domain([0, d3.max(migrationData)])
+            //  .domain([0, d3.max(migrationData)])
             .domain([0, d3.max(migrationData, d => d.Net_Overseas_Migration_Thousands)])
             .range([0, h]);
         //Create x-axis
         var xAxis = d3.axisBottom()
             .scale(xScale);
         svg.append("g")
-           .attr("transform", "translate(0, " + (h - barpadding) + ")")
+            .attr("transform", "translate(0, " + (h - barpadding) + ")")
             .call(xAxis);
 
         var yAxis = d3.axisLeft()
             .scale(yScale);
 
         svg.append("g")
-        .attr("transform", "translate(" + (barpadding) + ",0)")
-        .call(yAxis);
+            .attr("transform", "translate(" + (barpadding) + ",0)")
+            .call(yAxis);
+
 
 
 
@@ -49,16 +50,36 @@ function init() {
             .data(migrationData)
             .enter()
             .append("rect")
+            /*
             .attr("x", function (d, i) {
                 return i * (w / migrationData.length);
             })
+            */
+            .attr("x", function (d, i) {
+                return xScale(i.migrationData.length);
+            })
+            /*
+             .attr("y", function (d) {
+                 return h - (d.Net_Overseas_Migration_Thousands / 3);
+             })
+             */
             .attr("y", function (d) {
-                return h - (d.Net_Overseas_Migration_Thousands / 3);
+                return h - yScale(d.Net_Overseas_Migration_Thousands);
+
             })
+            /*
+             .attr("height", function (d) {
+                 return d.Net_Overseas_Migration_Thousands / 3;
+             })
+             */
             .attr("height", function (d) {
-                return d.Net_Overseas_Migration_Thousands / 3;
+                return yScale(d.Net_Overseas_Migration_Thousands)
             })
+
+            /*
             .attr("width", w / migrationData.length - 5)
+            */
+            .attr("width", xScale.bandwidth())
             .attr("fill", function (d) {
                 return "rgb(0,0, " + Math.round(d.Net_Overseas_Migration_Thousands * 10) + ")";
             });
