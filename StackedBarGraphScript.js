@@ -2,7 +2,7 @@
 function stackedBarInit() {
     w = 600;
     h = 300;
-    padding = 20;
+    padding = 25;
 
     var dataset;
 
@@ -55,7 +55,7 @@ function stackedBarChart(dataset, w, h, padding) {
                         "IndiaValues", 
                         "ChinaValues", 
                         "NewZealandValues", 
-                        "PhilippinesValue", 
+                        "PhilippinesValues", 
                         "SouthAfricaValues"
                     ]);
 
@@ -63,8 +63,8 @@ function stackedBarChart(dataset, w, h, padding) {
 
     var svg = d3.select("#stackedBarGraph")
                 .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+                .attr("width", w + padding)
+                .attr("height", h + padding);
 
     var groups = svg.selectAll("g")
                     .data(series)
@@ -79,8 +79,7 @@ function stackedBarChart(dataset, w, h, padding) {
                         .enter()
                         .append("rect")
                         .attr("x", function(d, i) {
-                            console.log(xScale(d));
-                            return xScale(dates[i]);
+                            return xScale(dates[i]) + padding;
                         })
                         .attr("y", function(d, i) {
                             return yScale(d[1]);
@@ -91,10 +90,32 @@ function stackedBarChart(dataset, w, h, padding) {
                         .attr("width", xScale.bandwidth());
 
         var xAxis = d3.axisBottom()
-            .scale(xScale);
+            .scale(xScale)
+            .tickFormat(function(d) {
+                var month = d3.timeFormat("%b")(d);
+                var year = d3.timeFormat("'%y")(d);
+                return month + " " + year;
+            });
+
+        var insertBreaks = function(d) {
+            var s = d3.select(this);
+            var words = d.split(" ");
+            s.text("");
+
+            for (var i = 0; i < words.length; i++) {
+                var tspan = s.append("tspan").text(words[i]);
+                if(i > 0) {
+                    tspan.attr("x", 0)
+                        .attr("dy", "15");
+                }
+            }
+        };
+
+        svg.selectAll("g.tick text")
+            .each(insertBreaks);
     
         svg.append("g")
-            .attr("transform", "translate(20, " + (h + (padding/2)) + ")")
+            .attr("transform", "translate(20, 300)")
             .call(xAxis);
     
         var yAxis = d3.axisLeft()
