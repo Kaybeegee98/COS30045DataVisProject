@@ -63,8 +63,8 @@ function stackedBarChart(dataset, w, h, padding) {
 
     var svg = d3.select("#stackedBarGraph")
                 .append("svg")
-                .attr("width", w + padding)
-                .attr("height", h + padding);
+                .attr("width", w + padding + 10)
+                .attr("height", h + padding + 10);
 
     var groups = svg.selectAll("g")
                     .data(series)
@@ -95,34 +95,20 @@ function stackedBarChart(dataset, w, h, padding) {
                 var month = d3.timeFormat("%b")(d);
                 var year = d3.timeFormat("'%y")(d);
                 return month + " " + year;
-            });
+            })
 
-        var insertBreaks = function(d) {
-            var s = d3.select(this);
-            var words = d.split(" ");
-            s.text("");
-
-            for (var i = 0; i < words.length; i++) {
-                var tspan = s.append("tspan").text(words[i]);
-                if(i > 0) {
-                    tspan.attr("x", 0)
-                        .attr("dy", "15");
-                }
-            }
-        };
-
-        svg.selectAll("g.tick text")
-            .each(insertBreaks);
-    
         svg.append("g")
-            .attr("transform", "translate(20, 300)")
-            .call(xAxis);
+            .attr("transform", "translate(" + padding + ", 300)")
+            .call(xAxis)
+            .selectAll(".tick text")
+            .attr("transform", "translate(0, 10)")
+            .attr("transform", "rotate(-30)");
     
         var yAxis = d3.axisLeft()
             .ticks(10)
             .scale(yScale); 
     
         svg.append("g")
-            .attr("transform", "translate(20 , 10)")                        //Position Y-Axis Correctly
+            .attr("transform", "translate(" + padding + " , 0)")                        //Position Y-Axis Correctly
             .call(yAxis);
 }

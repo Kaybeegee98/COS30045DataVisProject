@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-color: red;      /* Set consistent Background Colour*/
+    background-color: #cce6cc;      /* Set consistent Background Colour*/
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -11,14 +11,14 @@ body {
 
 
 .rightDiv, .leftDiv {
-    background-color: red;      /*Make both right and left div's same as background */
-    flex-basis: 25%;
+    background-color: #cce6cc;      /*Make both right and left div's same as background */
+    flex-basis: 20%;
     height: 100%;
 }
 
 .middleDiv {
-    background-color: green;    /*This is the primary Div*/
-    flex-basis: 50%;
+    background-color: #99cc99;    /*This is the primary Div*/
+    flex-basis: 60%;
     height: 100%;
 }
 
@@ -35,7 +35,7 @@ body {
     width: 75%;
     margin: auto;
     padding: 2em;
-    background-color: pink;
+    background-color: #cc99b3;
 }
 
 #lineGraph {
