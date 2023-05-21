@@ -45,8 +45,8 @@ function pieInit() {
         //Create SVG element
         var svg = d3.select("#pieGraph")
             .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+            .attr("width", w + 40)
+            .attr("height", h + 40);
 
         //Set up groups
         var arcs = svg.selectAll()
@@ -64,7 +64,20 @@ function pieInit() {
                 return color(i);
             }).attr("d", function (d, i) {
                 return arc(d, i);
-            });                                        
+            })
+            .on("mouseover", function (event, d) {
+                d3.select(this)
+                  .transition()
+                  .duration(200)
+                  .attr("d", d3.arc().outerRadius(outerRadius + 10).innerRadius(innerRadius));
+              })
+              .on("mouseout", function (event, d) {
+                d3.select(this)
+                  .transition()
+                  .duration(200)
+                  .attr("d", d3.arc().outerRadius(outerRadius).innerRadius(innerRadius));
+              });
+                                              
 
         //generate text labels for each wedge
         arcs.append("text")
