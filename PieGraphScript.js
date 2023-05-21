@@ -23,7 +23,7 @@ function pieInit() {
 
     function pieChart() {
         var w = 500;
-        var h = 520;
+        var h = 540;
         //To generate the paths for our pie chart we can use d3.pie().
         var pie = d3.pie().value(function (d) {
             return d.overseas_born_thousands;
@@ -45,8 +45,8 @@ function pieInit() {
         //Create SVG element
         var svg = d3.select("#pieGraph")
             .append("svg")
-            .attr("width", w + 40)
-            .attr("height", h + 40);
+            .attr("width", w + 120)
+            .attr("height", h + 20);
 
         //Set up groups
         var arcs = svg.selectAll()
@@ -54,7 +54,7 @@ function pieInit() {
             .enter()
             .append("g")
             .attr("class", "arc")
-            .attr("transform", "translate(" + outerRadius + ", " + (outerRadius + 20) + ")");
+            .attr("transform", "translate(" + (outerRadius + 100) + ", " + (outerRadius + 40) + ")");
         //Set up colors
         var color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -103,7 +103,7 @@ function pieInit() {
 
         // Add title to the top of the pie chart
         svg.append("text")
-            .attr("x", w / 2)
+            .attr("x", w /2 + 100)
             .attr("y", 15)
             .attr("text-anchor", "middle")
             .text("Overseas Born Population (Thousands) by Country in 2020");
