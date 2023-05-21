@@ -53,6 +53,26 @@ function lineChart(data, w, h, padding) {
                 .attr("width", w + 2 * padding)
                 .attr("height", h + 2 * padding);
 
+    //Create Tooltip
+    var tooltip = d3.select("#tooltip");
+
+    var secondtooltip = d3.select("#secondtooltip");
+    
+    var tooltopDot = svg.append("circle")
+                        .attr("r", 5)
+                        .attr("fill", "#fc8781")
+                        .attr("stroke", "black")
+                        .attr("stroke-width", 2)
+                        .attr("opacity", 0)
+                        .attr("pointer-events", "none");
+
+    var secondtooltipDot = svg.append("circle")
+                        .attr("r", 5)
+                        .attr("fill", "#fc8781")
+                        .attr("stroke", "black")
+                        .attr("stroke-width", 2)
+                        .attr("opacity", 0)
+                        .attr("pointer-events", "none");
 
     svg.append("path")
         .datum(data)
@@ -82,6 +102,168 @@ function lineChart(data, w, h, padding) {
     svg.append("g")
         .attr("transform", "translate(20 , 10)")                        //Position Y-Axis Correctly
         .call(yAxis);
+
+    svg.append("rect")
+        .attr("width", w + 2 * padding)
+        .attr("height", h + 2 * padding)
+        .style("opacity", 0)
+        .style("pointer-events", "all")
+        .on("touchmouse mousemove", function(event) {
+            var choice = document.getElementById("lineSelect").value;
+            console.log(choice);
+            var mousePos = d3.pointer(event, this);
+            
+            var date = xScale.invert(mousePos[0]);
+
+            var hoveredIndex;
+
+            var year = date.getFullYear();
+            var yearIndex;
+            var monthIndex;
+
+            switch(year) {
+                case(2018):
+                    yearIndex = 0;
+                    break;
+                case(2019):
+                    yearIndex = 4;
+                    break;
+                case(2020):
+                    yearIndex = 8;
+                    break;
+                case(2021):
+                    yearIndex = 12;
+                    break;
+                case(2022):
+                    yearIndex = 16;
+                    break;
+                default:
+                    break;
+            }
+
+            if(date.getMonth() >= 0 && date.getMonth() < 3) {
+                monthIndex = 0;
+            }
+            else if (date.getMonth() >= 3 && date.getMonth() < 6) {
+                monthIndex = 1;
+            }
+            else if (date.getMonth() >= 6 && date.getMonth() < 9) {
+                monthIndex = 2;
+            }
+            else{
+                monthIndex = 3;
+            }
+            hoveredIndex = data[monthIndex + yearIndex];
+
+            tooltopDot.style("opacity", 1)
+                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                    .attr("cy", yScale(hoveredIndex.AustraliaValues))
+                    .attr("transform", "translate(20, 0)");
+
+            tooltip.style("display", "block")
+                    .style("top", 2100 + "px")
+                    .style("left", 600 + "px")
+
+            secondtooltip.style("display", "block")
+                    .style("top", 2160 + "px")
+                    .style("left", 600 + "px")
+
+            tooltip.select(".date")
+                    .text("Australia " + hoveredIndex.date);
+
+            tooltip.select(".price")
+                    .text(hoveredIndex.AustraliaValues);
+
+            switch(choice) {
+                case "England":
+                    secondtooltipDot.style("opacity", 1)
+                                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                                    .attr("cy", yScale(hoveredIndex.EnglandValues))
+                                    .attr("transform", "translate(20, 0)");
+
+                    secondtooltip.select(".date")
+                                .text("England " + hoveredIndex.date);
+        
+                    secondtooltip.select(".price")
+                                .text(hoveredIndex.EnglandValues);
+                    break;
+        
+                case "India":
+                    secondtooltipDot.style("opacity", 1)
+                                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                                    .attr("cy", yScale(hoveredIndex.IndiaValues))
+                                    .attr("transform", "translate(20, 0)");
+
+                    secondtooltip.select(".date")
+                                .text("India " + hoveredIndex.date);
+        
+                    secondtooltip.select(".price")
+                                .text(hoveredIndex.IndiaValues);
+
+                    break;
+                
+                case "China":
+                    secondtooltipDot.style("opacity", 1)
+                                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                                    .attr("cy", yScale(hoveredIndex.ChinaValues))
+                                    .attr("transform", "translate(20, 0)");
+
+                    secondtooltip.select(".date")
+                                    .text("China " + hoveredIndex.date);
+            
+                    secondtooltip.select(".price")
+                                    .text(hoveredIndex.ChinaValues);
+                    break;
+        
+                case "NewZealand":
+                    secondtooltipDot.style("opacity", 1)
+                                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                                    .attr("cy", yScale(hoveredIndex.NewZealandValues))
+                                    .attr("transform", "translate(20, 0)");
+
+                    secondtooltip.select(".date")
+                                    .text("New Zealnd " + hoveredIndex.date);
+            
+                    secondtooltip.select(".price")
+                                    .text(hoveredIndex.NewZealandValues);
+                    break;
+                
+                case "Philippines":
+                    secondtooltipDot.style("opacity", 1)
+                                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                                    .attr("cy", yScale(hoveredIndex.PhilippinesValues))
+                                    .attr("transform", "translate(20, 0)");
+
+                    secondtooltip.select(".date")
+                                    .text("Philippines " + hoveredIndex.date);
+            
+                    secondtooltip.select(".price")
+                                    .text(hoveredIndex.PhilippinesValues);
+                    break;
+        
+                case "SouthAfrica":
+                    secondtooltipDot.style("opacity", 1)
+                                    .attr("cx", xScale(parseTime(hoveredIndex.date)))
+                                    .attr("cy", yScale(hoveredIndex.SouthAfricaValues))
+                                    .attr("transform", "translate(20, 0)");
+
+                    secondtooltip.select(".date")
+                                    .text("South Africa " + hoveredIndex.date);
+            
+                    secondtooltip.select(".price")
+                                    .text(hoveredIndex.SouthAfricaValues);
+                    break;
+        
+                default:
+                    break;
+            }
+        })
+        .on("mouseleave", function(){
+            tooltopDot.style("opacity", 0);
+            tooltip.style("display", "none");
+            secondtooltipDot.style("opacity", 0);
+            secondtooltip.style("display", "none");
+        })
 }
 
 function lineSelectGraph() {

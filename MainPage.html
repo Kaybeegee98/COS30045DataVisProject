@@ -22,7 +22,7 @@
             <br><br>
             <div class="textBox">
                 <h1>Net Overseas Migration to Australia</h1>
-                <p>
+                <p><span class="highlight">
                     Migration is defined as the movement from one
                     country, place or locality to another. 
                     Migration can occur in a number of
@@ -33,9 +33,9 @@
 
                     The ultimate goal for this Visualisation is to provide information to the user about people migrating to Australia from other countries and migration from state to state.
                     The website will allow users to:
-                    <ul>
-                        <li>Understand why migration occurs</li>
-                        <li>Where people are migrating from to come to Australia</li>
+                    </span><ul>
+                        <li><span class="highlight">Understand why migration occurs</span></li>
+                        <li><span class="highlight2">Where people are migrating from to come to Australia</span></li>
                         <li>Where people are migrating to from Australia</li>
                         <li>Why people are migrating and what are the factors</li>
                         <li>Understand the trend of migration </li>
@@ -94,7 +94,16 @@
                 <script>
                     lineInit();
                 </script>
-                <p id="lineGraph">This is where the Line Graph will go</p>
+                <p id="lineGraph">
+                    <div id="tooltip">
+                        <div class="date"></div>
+                        <div class="price"></div>
+                    </div>
+                    <div id="secondtooltip">
+                        <div class="date"></div>
+                        <div class="price"></div>
+                    </div>
+                </p>
                 <select id="lineSelect" onchange="lineSelectGraph()">
                     <option value="England">England</option>
                     <option value="India">India</option>
@@ -109,7 +118,13 @@
                 <script>
                     stackedBarInit();
                 </script>
-                <p id="stackedBarGraph">This is where the stacked bar goes</p>
+                <p id="stackedBarGraph"></p>
+                <button type="button" id="AustraliaData">Australia</button>
+                <button type="button" id="EnglandData">England</button>
+                <button type="button" id="IndiaData">India</button>
+                <button type="button" id="NewZealandData">New Zealand</button>
+                <button type="button" id="PhilippinesData">Philippines</button>
+                <button type="button" id="SouthAfriceData">South Africa</button>
             </div>
         </div>
         <div class="rightDiv"></div>

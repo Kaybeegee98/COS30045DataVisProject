@@ -32,6 +32,7 @@ function barInit() {
             //  .domain([0, d3.max(migrationData)])
             .domain([ 0,d3.max(migrationData, d => d.Net_Overseas_Migration_Thousands) ])
             .range([0, h]);
+
         //Create x-axis
         var xAxis = d3.axisBottom()
             .scale(xScale);
@@ -41,6 +42,7 @@ function barInit() {
 
         //Create the y-axis
         var yAxis = d3.axisLeft()
+            .ticks(5)
             .scale(yScale);
 
         svg.append("g")

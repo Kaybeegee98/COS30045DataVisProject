@@ -17,7 +17,7 @@ body {
 }
 
 .middleDiv {
-    background-color: #99cc99;    /*This is the primary Div*/
+    background-color: #a9a9a9;    /*This is the primary Div*/
     flex-basis: 60%;
     height: 100%;
 }
@@ -31,15 +31,32 @@ body {
     padding-right: 2em;
 }
 
+.highlight {
+    background: #caebf2;
+}
+
+.highlight2 {
+    background: #ff3b3f;
+}
+
 .graph {                        /*Setup the backgrounds for the Graph Elements*/
     width: 75%;
     margin: auto;
     padding: 2em;
-    background-color: #cc99b3;
+    background-color: #efefef;
 }
 
 #lineGraph {
     fill: none;
     stroke: slategray;
     stroke-width: 0.5;
+}
+
+#tooltip, #secondtooltip {
+    border: 1px solid #ccc;
+    position: absolute;
+    padding: 10px;
+    background-color: #808080;
+    display: none;
+    pointer-events: none;
 }
