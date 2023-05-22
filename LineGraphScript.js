@@ -36,7 +36,7 @@ function lineChart(data, w, h, padding) {
                 .range([0, w]);
 
     yScale = d3.scaleLinear()
-                .domain([0, d3.max(data, function (d) { return d.IndiaValues; })            //Scale from india values since india has the highest inflation rate
+                .domain([0, d3.max(data, function (d) { return d.EnglandValues + 1; })            //Scale from india values since india has the highest inflation rate
                 ])
                 .range([h, 0]);
 
@@ -103,6 +103,11 @@ function lineChart(data, w, h, padding) {
         .attr("transform", "translate(20 , 10)")                        //Position Y-Axis Correctly
         .call(yAxis);
 
+    var informationText = d3.select("#unemploymentText");
+
+    informationText._groups[0][0].innerHTML = "From Analysing the information we have gathered, we can see that historiacally England has had a higher unemployment rate than Australia";
+    console.log(informationText._groups[0][0].innerHTML);
+
     svg.append("rect")
         .attr("width", w + 2 * padding)
         .attr("height", h + 2 * padding)
@@ -160,13 +165,17 @@ function lineChart(data, w, h, padding) {
                     .attr("cy", yScale(hoveredIndex.AustraliaValues))
                     .attr("transform", "translate(20, 0)");
 
-            tooltip.style("display", "block")
-                    .style("top", 2100 + "px")
-                    .style("left", 600 + "px")
+            /*tooltip.style("display", "block")
+                    .style("top", 2200 + "px")
+                    .style("left", 600 + "px")*/
 
             secondtooltip.style("display", "block")
-                    .style("top", 2160 + "px")
+                    .style("top", 2260 + "px")
                     .style("left", 600 + "px")
+
+            tooltip.style("display", "block")
+                    .style("top", "${yScale(hoveredIndex.AustraliaValues) - 50}px")
+                    .style("left", "${xScale(parsTime(hoveredIndex.date)) + 100}px");
 
             tooltip.select(".date")
                     .text("Australia " + hoveredIndex.date);
@@ -199,7 +208,6 @@ function lineChart(data, w, h, padding) {
         
                     secondtooltip.select(".price")
                                 .text(hoveredIndex.IndiaValues);
-
                     break;
                 
                 case "China":
@@ -274,6 +282,7 @@ function lineSelectGraph() {
 
 function update(choice){
     var dataset;
+    var informationText = d3.select("#unemploymentText");
 
     d3.csv("Files/InflationRateSecondAttempt.csv", function(d) {
         return {
@@ -320,14 +329,17 @@ function update(choice){
     switch(choice) {
         case "England":
             secondline = englandline;
+            informationText._groups[0][0].innerHTML = "From Analysing the information we have gathered, we can see that historiacally England has had a higher unemployment rate than Australia";
             break;
 
         case "India":
             secondline = indialine;
+            informationText._groups[0][0].innerHTML = "From Analysing the information we have gathered, it is clear that India has a consistently higher rate of unemployment then found in Australia.";
             break;
         
         case "China":
             secondline = chinaline;
+            informationText._groups[0][0].innerHTML = "From Analysing the information we have gathered, China and Australia have often traded which country has the higher unemployment rate, with it currently being Australia.";
             break;
 
         case "NewZealand":
