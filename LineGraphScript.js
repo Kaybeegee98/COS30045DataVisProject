@@ -165,17 +165,13 @@ function lineChart(data, w, h, padding) {
                     .attr("cy", yScale(hoveredIndex.AustraliaValues))
                     .attr("transform", "translate(20, 0)");
 
-            /*tooltip.style("display", "block")
-                    .style("top", 2200 + "px")
-                    .style("left", 600 + "px")*/
-
-            secondtooltip.style("display", "block")
-                    .style("top", 2260 + "px")
+            tooltip.style("display", "block")
+                    .style("top", 2250 + "px")
                     .style("left", 600 + "px")
 
-            tooltip.style("display", "block")
-                    .style("top", "${yScale(hoveredIndex.AustraliaValues) - 50}px")
-                    .style("left", "${xScale(parsTime(hoveredIndex.date)) + 100}px");
+            secondtooltip.style("display", "block")
+                    .style("top", 2310 + "px")
+                    .style("left", 600 + "px")
 
             tooltip.select(".date")
                     .text("Australia " + hoveredIndex.date);
