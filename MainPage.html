@@ -95,26 +95,29 @@
                 </p>
             </div>
             <br>
-            <h1 class="websiteTitle">Inflation Rates</h1>
-            <h2 class="subheadingTitle">What is Inflation Rate and Why is it Important?</h2>
-            <p class="textBox"> <span class="highlight">
-                A brief description of the inflation rate is that it is simply the rate of increase in prices over a given period. Typically if a country has a higher inflation rate, it means the cost of living increases quicker than those countries with a lower inflation rate. When looking at different countries migrating to Australia, a question we wanted to answer was, “Why do people migrate to Australia?”. A generally lower cost of living was one of our proposed answers to this question, especially when combined with a lower unemployment rate (more on that later).
-                The below graph is set up to allow users to view the difference in inflation rates between countries moving to Australia and Australia itself. From this, we hope we can see patterns in the inflation rates that might describe why people are migrating to Australia.
-                The rationale we are thinking about during this is if a country has a disproportionately large inflation rate when compared to Australia, then the migration rate to Australia should be larger.
-            </span></p>
+            <div class="textBox">
+                <h1 class="websiteTitle">Inflation Rates</h1>
+                <h2 class="subheadingTitle">What is Inflation Rate and Why is it Important?</h2>
+                <p> <span class="highlight">
+                    A brief description of the inflation rate is that it is simply the rate of increase in prices over a given period. Typically if a country has a higher inflation rate, it means the cost of living increases quicker than those countries with a lower inflation rate. When looking at different countries migrating to Australia, a question we wanted to answer was, “Why do people migrate to Australia?”. A generally lower cost of living was one of our proposed answers to this question, especially when combined with a lower unemployment rate (more on that later).
+                    The below graph is set up to allow users to view the difference in inflation rates between countries moving to Australia and Australia itself. From this, we hope we can see patterns in the inflation rates that might describe why people are migrating to Australia.
+                    The rationale we are thinking about during this is if a country has a disproportionately large inflation rate when compared to Australia, then the migration rate to Australia should be larger.
+                </span></p>
+            </div>
             <br>
             <div class="graph lineDiv">
+                <h2 class="websiteTitle">Inflation Rates (Seasonally Adjusted) - %</h2>
                 <script>
                     lineInit();
                 </script>
                 <p id="lineGraph">
                     <div id="tooltip">
                         <div class="date"></div>
-                        <div class="price"></div>
+                        <div class="percentage"></div>
                     </div>
                     <div id="secondtooltip">
                         <div class="date"></div>
-                        <div class="price"></div>
+                        <div class="percentage"></div>
                     </div>
                 </p>
                 <select id="lineSelect" onchange="lineSelectGraph()">
@@ -125,11 +128,31 @@
                     <option value="Philippines">Philippines</option>
                     <option value="SouthAfrica">South Africa</option>
                 </select>
-
                 <div id="unemploymentText">Unemployment Text Template Location</div>
             </div>
-            <br><br>
+            <br>
+            <div class="textBox">
+                <h2 class="subheadingTitle">Inflation Rate Results</h2>
+                <p><span class="highlight">
+                    Looking at all the different inflation rates compared to each other, we should be able to determine if the Inflation rate has some sway over why people migrate to Australia. 
+                    From the different charts, the countries that have the worst inflation rates over the years would appear to belong to;
+                    </span><ul>
+                        <li><span class="highlight">India, who had the consistently highest inflation rate </span></li>
+                        <li><span class="highlight">England, who has had the highest inflation rate since October 2021</span></li>
+                        <li><span class="highlight">South Africa, which may not be the highest but has never been lower than Australia</span></li>
+                    </ul><span class="highlight">
+                    When comparing this to the Overseas Born Population pie chart (which looked at overseas migration in the year 2020), we can see that the two countries with the most migration were India and England. 
+                    From this, we can infer that there is in fact a connection between the high inflation rate and migration towards Australia, although it may not be the only factor. New Zealand sits at the fourth highest migration tally, even though its inflation rate is comparable to Australia.
+    
+                </span></p>
+            </div>
+            <br>
+            <div class="textBox">
+                <h1 class="websiteTitle">Unemployment Rates</h2>
+            </div>
             <div class="graph stackedBarDiv">
+                <h2 class="websiteTitle">Unemployment Rates - %</h2>
+                <h3 class="subheadingTitle">Country Keys</h3>
                 <div>
                     <p class="keys australia">Australia</p>
                     <p class="keys england">England</p>
@@ -139,6 +162,7 @@
                     <p class="keys philippines">Philippines</p>
                     <p class="keys southafrica">South Africa</p>
                 </div>
+                <br><br>
                 <script>
                     stackedBarInit();
                 </script>
