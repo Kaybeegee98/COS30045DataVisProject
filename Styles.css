@@ -20,6 +20,7 @@ body {
     background-color: #a9a9a9;    /*This is the primary Div*/
     flex-basis: 60%;
     height: 100%;
+    border: double;
 }
 
 .websiteTitle {
@@ -36,7 +37,7 @@ body {
 }
 
 .highlight {
-    background: #caebf2;
+    background: rgba(202, 235, 242, 75%);
 }
 
 .highlight2 {
@@ -48,6 +49,9 @@ body {
     margin: auto;
     padding: 2em;
     background-color: #efefef;
+    border: outset;
+    border-width: 5px;
+    border-color: rgba(255, 59, 63, 75%);
 }
 
 .graph .stackedBarDiv {
@@ -65,31 +69,31 @@ body {
 }
 
 .australia{
-    background-color: purple;
+    background-color: pink;
 }
 
 .england{
-    background-color: red;
+    background-color: pink;
 }
 
 .india{
-    background-color: green;
+    background-color: pink;
 }
 
 .china{
-    background-color: yellow;
+    background-color: pink;
 }
 
 .newzealand{
-    background-color: maroon;
+    background-color: pink;
 }
 
 .philippines{
-    background-color: blue;
+    background-color: pink;
 }
 
 .southafrica{
-    background-color: palegoldenrod;
+    background-color: pink;
 }
 
 #lineGraph {
@@ -105,4 +109,9 @@ body {
     background-color: #a9a9a9;
     display: none;
     pointer-events: none;
+}
+
+.footerText {
+    padding: 2em;
+    padding-bottom: 1em;
 }
