@@ -10,15 +10,6 @@ function pieInit() {
 
     //Enlarge the slice of the pie chart
     // Define a function to interpolate the arc's outer radius
-    function arcTween(radius) {
-        return function (d) {
-            var i = d3.interpolate(d.outerRadius, radius);
-            return function (t) {
-                d.outerRadius = i(t);
-                return arc(d);
-            };
-        };
-    }
 
 
     function pieChart() {
@@ -45,7 +36,7 @@ function pieInit() {
         //Create SVG element
         var svg = d3.select("#pieGraph")
             .append("svg")
-            .attr("width", w + 120)
+            .attr("width", w + 150)
             .attr("height", h + 20);
 
         //Set up groups
@@ -98,7 +89,7 @@ function pieInit() {
             objects (d.value)
             */
             .text(function (d) {
-                return d.data.country + ": " + d.data.overseas_born_thousands;
+                return  d.data.overseas_born_thousands;
             });
 
         // Add title to the top of the pie chart
@@ -108,6 +99,41 @@ function pieInit() {
             .attr("text-anchor", "middle")
             .text("Overseas Born Population (Thousands) by Country in 2020");
 
+                    // Create legend data (assuming `overseasBornData` contains the country names)
+        var legendData = overseasBornData.map(function (d) {
+            return d.country;
+        });
+
+        // Create legend element
+        var legend = svg.append("g")
+            .attr("class", "legend")
+            .attr("transform", "translate(" + (outerRadius + 300) + ", " + (outerRadius + 200) + ")");
+
+        // Add legend items
+        var legendItems = legend.selectAll(".legend-item")
+            .data(legendData)
+            .enter()
+            .append("g")
+            .attr("class", "legend-item")
+            .attr("transform", function (d, i) {
+                return "translate(0," + (i * 20) + ")";
+            });
+
+        // Add legend color squares
+        legendItems.append("rect")
+            .attr("width", 10)
+            .attr("height", 10)
+            .attr("fill", function (d, i) {
+                return color(i);
+            });
+
+        // Add legend labels
+        legendItems.append("text")
+            .attr("x", 15)
+            .attr("y", 9)
+            .text(function (d) {
+                return d;
+            });
 
 
 
@@ -118,4 +144,3 @@ function pieInit() {
     }
 
 }
-window.onload = init;
