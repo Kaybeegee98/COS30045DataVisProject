@@ -70,6 +70,46 @@ function stackedBarChart(dataset, w, h, padding) {
                     .enter()
                     .append("g")
                     .style("fill", function(d, i) {
+                        switch(i){
+                            case(0):
+                                var element = document.querySelector(".australia");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            case(1):
+                                var element = document.querySelector(".england");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            case(2):
+                                var element = document.querySelector(".india");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            case(3):
+                                var element = document.querySelector(".china");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            case(4):
+                                var element = document.querySelector(".newzealand");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            case(5):
+                                var element = document.querySelector(".philippines");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            case(6):
+                                var element = document.querySelector(".southafrica");
+                                element.style.backgroundColor = color(i);
+                                break;
+
+                            default:
+                                console.log("Value out of Range")
+                                break;
+                        }
                         return color(i);
                     });          
                     
@@ -162,136 +202,4 @@ function stackedBarChart(dataset, w, h, padding) {
         svg.append("g")
             .attr("transform", "translate(" + padding + " , 0)")                        //Position Y-Axis Correctly
             .call(yAxis);  
-            
-            
-
-            d3.select("#AustraliaData")
-                .on("click", function() {
-                    var australiaChange = dataset.map(function(d) {                     //Remap the dataset, exluding Australia
-                        return {
-                            date: d.date,
-                            EnglandValues: d.EnglandValues,
-                            IndiaValues: d.IndiaValues,
-                            ChinaValues: d.ChinaValues,
-                            NewZealandValues: d.NewZealandValues,
-                            PhilippinesValues: d.PhilippinesValues,
-                            SouthAfricaValues: d.SouthAfricaValues
-                        };
-                    });
-
-                    console.table(australiaChange, ["country", "dateValues"]);
-
-                    var removeAustraliaStack = d3.stack()
-                    .keys([
-                        "EnglandValues", 
-                        "IndiaValues", 
-                        "ChinaValues", 
-                        "NewZealandValues", 
-                        "PhilippinesValues", 
-                        "SouthAfricaValues"
-                    ]);
-
-                    var removeAustraliaSeries = removeAustraliaStack(australiaChange);
-                    console.log(removeAustraliaSeries);
-
-                    var removeAustraliaGroups = svg.selectAll("g")
-                                                .data(removeAustraliaSeries);
-
-                    console.log(removeAustraliaGroups);
-
-                    removeAustraliaGroups.exit()
-                            .selectAll("rect")
-                            .transition()
-                            .duration(1000)
-                            .attr("y", h)
-                            .each(function(d) {
-                                console.log("Removing value:", d.key, d[1] - d[0]);
-                              })
-                            .remove();
-
-                    removeAustraliaGroups.enter()
-                                        .append("g")
-                                        .attr("class","group")
-                                        .style("fill", function(d, i) {
-                                            return color(i + 1);
-                                        })
-                                        .selectAll("rect.bar")
-                                        .data(function(d) { return d;})
-                                        .enter()
-                                        .append("rect")
-                                        .attr("class", "bar")
-                                        .attr("x", function(d, i) {
-                                            return xScale(dates[i]) + padding;
-                                        })
-                                        .attr("y", function(d, i) {
-                                            return yScale(d[1]);
-                                        })
-                                        .attr("height", function(d) {
-                                            return yScale(d[0]) - yScale(d[1]);
-                                        })
-                                        .attr("width", xScale.bandwidth());
-                })
-
-                d3.select("#EnglandData")
-                .on("click", function() {
-                    console.log("england");
-                    var englandChange = dataset.map(function(d) {                     //Remap the dataset, exluding Australia
-                        return {
-                            date: d.date,
-                            AustraliaValues: d.AustraliaValues,
-                            IndiaValues: d.IndiaValues,
-                            ChinaValues: d.ChinaValues,
-                            NewZealandValues: d.NewZealandValues,
-                            PhilippinesValues: d.PhilippinesValues,
-                            SouthAfricaValues: d.SouthAfricaValues
-                        };
-                    });
-
-                    console.table(englandChange, ["country", "dateValues"]);
-
-                    var removeEnglandStack = d3.stack()
-                    .keys([
-                        "AustraliaValues", 
-                        "IndiaValues", 
-                        "ChinaValues", 
-                        "NewZealandValues", 
-                        "PhilippinesValues", 
-                        "SouthAfricaValues"
-                    ]);
-
-                    var removeEnglandSeries = removeEnglandStack(englandChange);
-
-                    var removeEnglandGroups = svg.selectAll("g")
-                                                .data(removeEnglandSeries);
-                                                
-                    console.log(removeEnglandGroups);
-
-                    removeEnglandGroups.exit()
-                            .selectAll("rect")
-                            .transition()
-                            .duration(1000)
-                            .attr("y", h)
-                            .remove();
-
-                    removeEnglandGroups.enter()
-                                        .append("g")
-                                        .attr("class","group")
-                                        .style("fill", function(d, i) {
-                                            return color(i + 1);
-                                        })
-                                        .selectAll("rect")
-                                        .data(function(d) { return d;})
-                                        .enter()
-                                        .append("rect")
-                                        .attr("x", function(d, i) {
-                                            return xScale(dates[i]) + padding;
-                                        })
-                                        .attr("y", function(d, i) {
-                                            return yScale(d[1]);
-                                        })
-                                        .attr("height", function(d) {
-                                            return yScale(d[0]) - yScale(d[1]);
-                                        })
-                                        .attr("width", xScale.bandwidth());
-                })
 }

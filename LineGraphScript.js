@@ -77,14 +77,14 @@ function lineChart(data, w, h, padding) {
     svg.append("path")
         .datum(data)
         .attr("class", "line")
-        .attr("transform", "translate(20, 0)")
+        .attr("transform", "translate(20, " + padding/2 + ")")
         .attr("d", australialine)
         .attr("stroke", "blue");
 
     svg.append("path")
         .datum(data)
         .attr("class", "secondline")
-        .attr("transform", "translate(20, 0)")
+        .attr("transform", "translate(20, " + padding / 2 + ")")
         .attr("d", englandline)
         .attr("stroke", "red");
 
@@ -105,7 +105,7 @@ function lineChart(data, w, h, padding) {
 
     var informationText = d3.select("#unemploymentText");
 
-    informationText._groups[0][0].innerHTML = "From Analysing the information we have gathered, we can see that historiacally England has had a higher unemployment rate than Australia";
+    informationText._groups[0][0].innerHTML = "<b>Analysing the graph</b>, we can see that at the start of 2018, <b>England</b> had a higher inflation rate than <b>Australia</b>. This could be an indication of why people were migrating over to <b>Australia</b>. Over the years, <b>England</b> had a consistently higher inflation rate, with the only time this not being the case in April of 2020. While another spike like this happened in July of 2021, since October of that same year, <b>Australia</b> has had a lower inflation rate. As of October 2022, <b>Australia</b> sits at an inflation rate of 7.3% while <b>England</b> sits at 11.1%.";
     console.log(informationText._groups[0][0].innerHTML);
 
     svg.append("rect")
@@ -163,7 +163,7 @@ function lineChart(data, w, h, padding) {
             tooltopDot.style("opacity", 1)
                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                     .attr("cy", yScale(hoveredIndex.AustraliaValues))
-                    .attr("transform", "translate(20, 0)");
+                    .attr("transform", "translate(20, " + padding / 2 + ")");
 
             tooltip.style("display", "block")
                     .style("top", 2250 + "px")
@@ -184,7 +184,7 @@ function lineChart(data, w, h, padding) {
                     secondtooltipDot.style("opacity", 1)
                                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                                     .attr("cy", yScale(hoveredIndex.EnglandValues))
-                                    .attr("transform", "translate(20, 0)");
+                                    .attr("transform", "translate(20," + padding / 2 + ")");
 
                     secondtooltip.select(".date")
                                 .text("England " + hoveredIndex.date);
@@ -197,7 +197,7 @@ function lineChart(data, w, h, padding) {
                     secondtooltipDot.style("opacity", 1)
                                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                                     .attr("cy", yScale(hoveredIndex.IndiaValues))
-                                    .attr("transform", "translate(20, 0)");
+                                    .attr("transform", "translate(20, " + padding / 2 + ")");
 
                     secondtooltip.select(".date")
                                 .text("India " + hoveredIndex.date);
@@ -210,7 +210,7 @@ function lineChart(data, w, h, padding) {
                     secondtooltipDot.style("opacity", 1)
                                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                                     .attr("cy", yScale(hoveredIndex.ChinaValues))
-                                    .attr("transform", "translate(20, 0)");
+                                    .attr("transform", "translate(20, " + padding / 2 + ")");
 
                     secondtooltip.select(".date")
                                     .text("China " + hoveredIndex.date);
@@ -223,7 +223,7 @@ function lineChart(data, w, h, padding) {
                     secondtooltipDot.style("opacity", 1)
                                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                                     .attr("cy", yScale(hoveredIndex.NewZealandValues))
-                                    .attr("transform", "translate(20, 0)");
+                                    .attr("transform", "translate(20, " + padding / 2 + ")");
 
                     secondtooltip.select(".date")
                                     .text("New Zealnd " + hoveredIndex.date);
@@ -236,7 +236,7 @@ function lineChart(data, w, h, padding) {
                     secondtooltipDot.style("opacity", 1)
                                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                                     .attr("cy", yScale(hoveredIndex.PhilippinesValues))
-                                    .attr("transform", "translate(20, 0)");
+                                    .attr("transform", "translate(20, " + padding / 2 + ")");
 
                     secondtooltip.select(".date")
                                     .text("Philippines " + hoveredIndex.date);
@@ -249,7 +249,7 @@ function lineChart(data, w, h, padding) {
                     secondtooltipDot.style("opacity", 1)
                                     .attr("cx", xScale(parseTime(hoveredIndex.date)))
                                     .attr("cy", yScale(hoveredIndex.SouthAfricaValues))
-                                    .attr("transform", "translate(20, 0)");
+                                    .attr("transform", "translate(20, " + padding / 2 + ")");
 
                     secondtooltip.select(".date")
                                     .text("South Africa " + hoveredIndex.date);
@@ -325,7 +325,7 @@ function update(choice){
     switch(choice) {
         case "England":
             secondline = englandline;
-            informationText._groups[0][0].innerHTML = "From Analysing the information we have gathered, we can see that historiacally England has had a higher unemployment rate than Australia";
+            informationText._groups[0][0].innerHTML = "<b>Analysing the graph</b>, we can see that at the start of 2018, <b>England</b> had a higher inflation rate than <b>Australia</b>. This could be an indication of why people were migrating over to <b>Australia</b>. Over the years, <b>England</b> had a consistently higher inflation rate, with the only time this not being the case in April of 2020. While another spike like this happened in July of 2021, since October of that same year, <b>Australia</b> has had a lower inflation rate. As of October 2022, <b>Australia</b> sits at an inflation rate of 7.3% while <b>England</b> sits at 11.1%.";
             break;
 
         case "India":

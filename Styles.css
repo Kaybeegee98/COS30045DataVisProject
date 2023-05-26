@@ -26,6 +26,10 @@ body {
     text-align: center;
 }
 
+.subheadingTitle {
+    padding-left: 2em;
+}
+
 .textBox {
     padding-left: 2em;
     padding-right: 2em;
@@ -44,6 +48,48 @@ body {
     margin: auto;
     padding: 2em;
     background-color: #efefef;
+}
+
+.graph .stackedBarDiv {
+    display: inline;
+}
+
+.keys{
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-style: inset;
+    border-color: slategrey;
+}
+
+.australia{
+    background-color: purple;
+}
+
+.england{
+    background-color: red;
+}
+
+.india{
+    background-color: green;
+}
+
+.china{
+    background-color: yellow;
+}
+
+.newzealand{
+    background-color: maroon;
+}
+
+.philippines{
+    background-color: blue;
+}
+
+.southafrica{
+    background-color: palegoldenrod;
 }
 
 #lineGraph {
