@@ -20,10 +20,15 @@ body {
     background-color: #a9a9a9;    /*This is the primary Div*/
     flex-basis: 60%;
     height: 100%;
+    border: double;
 }
 
 .websiteTitle {
     text-align: center;
+}
+
+.subheadingTitle {
+    text-align: left;
 }
 
 .textBox {
@@ -32,7 +37,7 @@ body {
 }
 
 .highlight {
-    background: #caebf2;
+    background: rgba(202, 235, 242, 75%);
 }
 
 .highlight2 {
@@ -44,6 +49,51 @@ body {
     margin: auto;
     padding: 2em;
     background-color: #efefef;
+    border: outset;
+    border-width: 5px;
+    border-color: rgba(255, 59, 63, 75%);
+}
+
+.graph .stackedBarDiv {
+    display: inline;
+}
+
+.keys{
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-style: inset;
+    border-color: slategrey;
+}
+
+.australia{
+    background-color: pink;
+}
+
+.england{
+    background-color: pink;
+}
+
+.india{
+    background-color: pink;
+}
+
+.china{
+    background-color: pink;
+}
+
+.newzealand{
+    background-color: pink;
+}
+
+.philippines{
+    background-color: pink;
+}
+
+.southafrica{
+    background-color: pink;
 }
 
 #lineGraph {
@@ -56,7 +106,12 @@ body {
     border: 1px solid #ccc;
     position: absolute;
     padding: 10px;
-    background-color: #808080;
+    background-color: #a9a9a9;
     display: none;
     pointer-events: none;
+}
+
+.footerText {
+    padding: 2em;
+    padding-bottom: 1em;
 }
