@@ -37,7 +37,8 @@ body {
 }
 
 .highlight {
-    background: rgba(202, 235, 242, 75%);
+    /*background: rgba(202, 235, 242, 75%);*/
+    color: rgba(202, 235, 242);
 }
 
 .highlight2 {
