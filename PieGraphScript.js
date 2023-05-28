@@ -2,7 +2,7 @@
 function pieInit() {
 
 
-    d3.csv("/Files/OverseasBorn.csv").then(function (data) {
+    d3.csv("Files/OverseasBorn.csv").then(function (data) {
         console.log(data);
         overseasBornData = data;
         pieChart(overseasBornData);

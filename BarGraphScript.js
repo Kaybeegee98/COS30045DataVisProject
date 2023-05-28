@@ -2,7 +2,7 @@
 
 function barInit() {
 
-    d3.csv("/Files/NetMigration.csv").then(function (data) {
+    d3.csv("Files/NetMigration.csv").then(function (data) {
         console.log(data);
         migrationData = data;
         barChart(migrationData);
