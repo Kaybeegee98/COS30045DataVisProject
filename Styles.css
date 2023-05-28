@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-color: #cce6cc;      /* Set consistent Background Colour*/
+    background-color: #66cc66;      /* Set consistent Background Colour*/
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -11,16 +11,21 @@ body {
 
 
 .rightDiv, .leftDiv {
-    background-color: #cce6cc;      /*Make both right and left div's same as background */
     flex-basis: 20%;
     height: 100%;
 }
 
 .middleDiv {
-    background-color: #a9a9a9;    /*This is the primary Div*/
+    background-color: #909090;    /*This is the primary Div*/
     flex-basis: 60%;
     height: 100%;
     border: double;
+}
+
+.mainTitle {
+    text-align: center;
+    font-size: 48px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .websiteTitle {
@@ -34,14 +39,16 @@ body {
 .textBox {
     padding-left: 2em;
     padding-right: 2em;
+    font-size: 115%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .highlight {
-    background: rgba(202, 235, 242, 75%);
+   color: #ccffff;
 }
 
-.highlight2 {
-    background: #ff3b3f;
+.bolden {
+    color: #003399;
 }
 
 .graph {                        /*Setup the backgrounds for the Graph Elements*/
@@ -51,7 +58,7 @@ body {
     background-color: #efefef;
     border: outset;
     border-width: 5px;
-    border-color: rgba(255, 59, 63, 75%);
+    border-color: rgba(255, 51, 51, 75%);
 }
 
 .graph .stackedBarDiv {
@@ -106,7 +113,7 @@ body {
     border: 1px solid #ccc;
     position: absolute;
     padding: 10px;
-    background-color: #a9a9a9;
+    background-color: #b6b6b6;
     display: none;
     pointer-events: none;
 }
