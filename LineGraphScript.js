@@ -166,11 +166,11 @@ function lineChart(data, w, h, padding) {
                     .attr("transform", "translate(20, " + padding / 2 + ")");
 
             tooltip.style("display", "block")
-                    .style("top", 3340 + "px")
+                    .style("top", 3040 + "px")
                     .style("left", 600 + "px")
 
             secondtooltip.style("display", "block")
-                    .style("top", 3400 + "px")
+                    .style("top", 3100 + "px")
                     .style("left", 600 + "px")
 
             tooltip.select(".date")
